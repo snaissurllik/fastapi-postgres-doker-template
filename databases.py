@@ -1,23 +1,17 @@
-import psycopg2
+import asyncpg
 from time import sleep
-from .config import POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD
+from .config import (
+    POSTGRES_DB,
+    POSTGRES_USER,
+    POSTGRES_PASSWORD,
+    POSTGRES_PORT
+)
 
 
-def get_db_connection():
-    while True:
-        try:
-            conn = psycopg2.connect(
-                host="db",
-                database=f"{POSTGRES_DB}",
-                user=f"{POSTGRES_USER}",
-                password=f"{POSTGRES_PASSWORD}",
-            )
-            return conn
-        except psycopg2.OperationalError:
-            print(
-                "Failed to connect to the Postgres database. Retrying in 3 seconds..."
-            )
-            sleep(3)
-
-
-conn = get_db_connection()
+async def connect_to_db():
+    sleep(3)
+    return await asyncpg.connect(host="db",
+                                 port=POSTGRES_PORT,
+                                 user=POSTGRES_USER,
+                                 password=POSTGRES_PASSWORD,
+                                 database=POSTGRES_DB)
