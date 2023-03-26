@@ -1,4 +1,4 @@
-## Simple FastAPI + sync raw SQL project base for beginners
+## Simple FastAPI + async raw SQL project base for beginners
 
 ### Prerequisites
 

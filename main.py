@@ -4,6 +4,7 @@ from .databases import connect_to_db
 from .app.service.routers import router
 
 
+# creating an app lifespan passing async connection to the db
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     app.conn = await connect_to_db()

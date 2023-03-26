@@ -8,6 +8,7 @@ from .config import (
 )
 
 
+# connecting to the database
 async def connect_to_db():
     sleep(3)
     return await asyncpg.connect(host="db",
