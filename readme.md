@@ -6,7 +6,7 @@
 - Docker Compose
 
 After clonning repository, specify database credentials in ```.env``` file and start the project with  
-```docker-compose --build```.
+```docker-compose up --build```.
 
 Go to ```scripts/db``` and write down your database architecture in ```init.sql```.
 
